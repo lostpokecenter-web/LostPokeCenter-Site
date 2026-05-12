@@ -3,112 +3,517 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LostPokeCenter LLC | Premium Pokémon TCG</title>
+    <title>LostPokeCenter LLC | Premium Pokémon TCG Slabs & Sealed</title>
     <style>
+        /* ========== CSS VARIABLES & DARK MODE VAULT THEME ========== */
         :root {
-            --pk-yellow: #FFCB05;
-            --pk-blue: #2A75BB;
-            --pk-dark: #1D1D1D;
-            --pk-light: #F4F4F4;
+            --primary-dark: #0a0e27;
+            --secondary-dark: #1a1f3a;
+            --accent-purple: #9d4edd;
+            --accent-gold: #ffd60a;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --card-bg: #151b2f;
+            --border-color: #2d3561;
+            --hover-color: #9d4edd;
         }
-        body { font-family: 'Inter', sans-sans-serif; 
-            margin: 0; 
-            /* Set background to black for a clean look that matches your banner */
-            background-color: var(--pk-dark); 
-            color: white; 
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
+            color: var(--text-primary);
             line-height: 1.6;
+            min-height: 100vh;
         }
 
-        /* Branding & Navigation */
-        header { 
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                        url('YOUR_BANNER_IMAGE_URL'); /* Add your banner image URL here */
-            background-size: cover;
-            background-position: center;
-            color: white; 
-            padding: 60px 20px; 
-            text-align: center; 
-            border-bottom: 4px solid var(--pk-purple); 
+        /* ========== HEADER / HERO SECTION ========== */
+        header {
+            background: linear-gradient(135deg, rgba(157, 78, 221, 0.1), rgba(255, 214, 10, 0.05)), 
+                        linear-gradient(180deg, var(--secondary-dark) 0%, var(--primary-dark) 100%);
+            border-bottom: 2px solid var(--accent-purple);
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(157, 78, 221, 0.15);
         }
 
-        .logo-img {
-            max-width: 250px; /* Adjust size for your Gengar logo */
+        .logo-container {
+            margin-bottom: 20px;
+        }
+
+        .logo-container img {
+            max-width: 280px;
             height: auto;
-            margin-bottom: 15px;
+            filter: drop-shadow(0 0 15px rgba(157, 78, 221, 0.5));
         }
 
-        .hero h1 { margin: 0; font-size: 2.5rem; letter-spacing: 2px; display: none; } /* Hidden because the logo has text */
-        .hero p { margin: 10px 0 0; color: var(--pk-yellow); font-weight: bold; text-transform: uppercase; }
+        .hero-text {
+            margin-bottom: 20px;
+        }
 
-        .nav-links { display: flex; justify-content: center; gap: 20px; background: #1a1a1a; padding: 12px; }
-        .nav-links a { color: white; text-decoration: none; font-size: 0.9rem; font-weight: 600; }
+        .hero-text h1 {
+            font-size: 2.5rem;
+            letter-spacing: 3px;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(255, 214, 10, 0.3);
+        }
 
-        /* Social Hub */
-        .social-grid { display: flex; justify-content: center; gap: 15px; padding: 20px; flex-wrap: wrap; }
-        .btn-social { padding: 10px 20px; border-radius: 30px; text-decoration: none; color: white; font-weight: bold; font-size: 0.8rem; }
-        .tiktok { background: #000; border: 1px solid white; }
-        .whatnot { background: #ff03; } /* Purple to match your brand */
-        .youtube { background: #FF0000; }
+        .hero-text p {
+            font-size: 1rem;
+            color: var(--accent-purple);
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
 
-        /* Shop Section */
-        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
-        .section-title { text-align: center; margin-bottom: 30px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-        
-        .card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 15px rgba(0,0,0,0.05); transition: 0.3s; text-align: center; padding-bottom: 20px; }
-        .card:hover { transform: translateY(-10px); }
-        .card img { width: 100%; height: 300px; object-fit: contain; background: #eee; }
-        .card h3 { margin: 15px 0 5px; font-size: 1.2rem; }
-        .card .price { font-size: 1.3rem; font-weight: bold; color: var(--pk-blue); margin-bottom: 15px; }
+        /* ========== SOCIAL BUTTONS ========== */
+        .social-hub {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
 
-        .buy-now { background: var(--pk-blue); color: white; padding: 12px 25px; border-radius: 5px; text-decoration: none; font-weight: bold; display: inline-block; }
+        .social-btn {
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
 
-        /* Generic Footer */
-        footer { background: var(--pk-dark); color: #888; text-align: center; padding: 50px 20px; margin-top: 60px; }
-        footer p { margin: 5px 0; }
-        .footer-legal { font-size: 0.75rem; margin-top: 20px; }
+        .social-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .btn-tiktok {
+            background: linear-gradient(135deg, #000000, #1a1a2e);
+            color: var(--text-primary);
+            border-color: var(--accent-gold);
+        }
+
+        .btn-tiktok:hover {
+            background: linear-gradient(135deg, #1a1a2e, #2d2d4a);
+            color: var(--accent-gold);
+        }
+
+        .btn-whatnot {
+            background: linear-gradient(135deg, var(--accent-purple), #7209b7);
+            color: var(--text-primary);
+        }
+
+        .btn-whatnot:hover {
+            background: linear-gradient(135deg, #7209b7, #560bad);
+        }
+
+        .btn-youtube {
+            background: linear-gradient(135deg, #ff0000, #c41e3a);
+            color: var(--text-primary);
+        }
+
+        .btn-youtube:hover {
+            background: linear-gradient(135deg, #c41e3a, #a01830);
+        }
+
+        /* ========== NAVIGATION ========== */
+        nav {
+            background: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        nav a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* ========== CONTAINER & SECTIONS ========== */
+        .container {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 50px;
+            font-weight: 700;
+            text-shadow: 0 0 20px rgba(255, 214, 10, 0.2);
+            border-bottom: 2px solid var(--accent-purple);
+            padding-bottom: 20px;
+        }
+
+        /* ========== PRODUCT GRID ========== */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: linear-gradient(135deg, var(--card-bg), var(--secondary-dark));
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 24px rgba(157, 78, 221, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 40px rgba(157, 78, 221, 0.3);
+            border-color: var(--accent-purple);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            background: linear-gradient(135deg, rgba(157, 78, 221, 0.1), rgba(255, 214, 10, 0.05));
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .card-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+
+        .card-meta {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            margin: 15px 0;
+            text-shadow: 0 0 10px rgba(255, 214, 10, 0.3);
+        }
+
+        .card-button {
+            margin-top: auto;
+        }
+
+        .btn-checkout {
+            background: linear-gradient(135deg, var(--accent-purple), #7209b7);
+            color: var(--text-primary);
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-checkout:hover {
+            background: linear-gradient(135deg, #7209b7, #560bad);
+            box-shadow: 0 6px 20px rgba(157, 78, 221, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background: var(--secondary-dark);
+            border-top: 2px solid var(--accent-purple);
+            color: var(--text-secondary);
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 80px;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin: 8px 0;
+        }
+
+        footer .footer-highlight {
+            color: var(--accent-gold);
+            font-weight: 700;
+        }
+
+        .footer-legal {
+            font-size: 0.8rem;
+            margin-top: 20px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+        }
+
+        /* ========== RESPONSIVE DESIGN (MOBILE-FIRST) ========== */
+        @media (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .hero-text p {
+                font-size: 0.9rem;
+            }
+
+            .logo-container img {
+                max-width: 200px;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 35px;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .social-hub {
+                gap: 10px;
+            }
+
+            .social-btn {
+                padding: 10px 18px;
+                font-size: 0.85rem;
+            }
+
+            nav {
+                gap: 15px;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav a {
+                font-size: 0.85rem;
+            }
+
+            header {
+                padding: 30px 15px;
+            }
+
+            .card-price {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 1.6rem;
+                letter-spacing: 2px;
+            }
+
+            .hero-text p {
+                font-size: 0.8rem;
+            }
+
+            .logo-container img {
+                max-width: 150px;
+            }
+
+            header {
+                padding: 20px 10px;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+                margin-bottom: 25px;
+            }
+
+            .social-btn {
+                width: 100%;
+            }
+
+            .social-hub {
+                flex-direction: column;
+            }
+        }
+
+        /* ========== UTILITY CLASSES ========== */
+        .separator {
+            width: 40px;
+            height: 2px;
+            background: var(--accent-purple);
+            margin: 20px auto;
+        }
     </style>
 </head>
 <body>
 
-<header class="hero">
-    <h1>LOSTPOKECENTER</h1>
-    <p>✦Join the Community Follow the Hunt✦</p>
-    <div class="social-grid">
-        <a href="https://vt.tiktok.com/ZTkTA7Mu9/?page=TikTokShop" class="btn-social tiktok">TikTok Shop</a>
-        <a href="https://whatnot.com/s/rsqPACvH" class="btn-social whatnot">Whatnot Live</a>
-        <a href="https://www.youtube.com/@Lost_PokeCenter" class="btn-social youtube">YouTube</a>
+<!-- HEADER / HERO SECTION -->
+<header>
+    <div class="logo-container">
+        <img src="LostPokeCenter Logo.png" alt="LostPokeCenter LLC - Premium Pokémon TCG">
+    </div>
+    <div class="hero-text">
+        <h1>LostPokeCenter LLC</h1>
+        <p>✦ Premium Graded Slabs • Sealed Vintage • Community Driven ✦</p>
+    </div>
+    <div class="separator"></div>
+    <div class="social-hub">
+        <a href="https://www.tiktok.com/@lost_pokecenter" class="social-btn btn-tiktok">🎵 TikTok</a>
+        <a href="https://whatnot.com/s/rsqPACvH" class="social-btn btn-whatnot">⭐ Whatnot Live</a>
+        <a href="https://www.youtube.com/@Lost_PokeCenter" class="social-btn btn-youtube">▶ YouTube</a>
     </div>
 </header>
 
-<nav class="nav-links">
-    <a href="#shop">Shop Inventory</a>
-    <a href="mailto:contact@lostpokecenter.com">Contact Support</a>
+<!-- STICKY NAVIGATION -->
+<nav>
+    <a href="#featured">Featured Grails</a>
+    <a href="#vault">Vault Collection</a>
+    <a href="mailto:contact@lostpokecenter.com">📧 Contact</a>
 </nav>
 
-<div class="container" id="shop">
-    <h2 class="section-title">Featured Slabs & Sealed</h2>
+<!-- FEATURED GRAILS SECTION -->
+<div class="container">
+    <h2 class="section-title" id="featured">Featured Grails</h2>
+    
     <div class="grid">
+        <!-- GRAIL 1 -->
         <div class="card">
-            <img src="https://via.placeholder.com/300x400?text=Charizard+Slab" alt="Charizard">
-            <h3>Example PSA 10 Slab</h3>
-            <div class="price">$299.99</div>
-            <a href="YOUR_STRIPE_LINK" class="buy-now">Secure Checkout</a>
+            <img src="P11218_10-10372-109_02.jpg" alt="Premium Graded Slab" class="card-image">
+            <div class="card-content">
+                <h3>Premium Graded Slab</h3>
+                <div class="card-meta">PSA / CGC Certified</div>
+                <div class="card-price">$899.99</div>
+                <div class="card-button">
+                    <a href="#" class="btn-checkout">Inquire</a>
+                </div>
+            </div>
         </div>
+
+        <!-- GRAIL 2 -->
         <div class="card">
-            <img src="https://via.placeholder.com/300x400?text=Booster+Box" alt="Sealed Product">
-            <h3>Charizard Ultra Premium Collection</h3>
-            <div class="price">$199.00</div>
-            <a href="YOUR_STRIPE_LINK" class="buy-now">Secure Checkout</a>
+            <img src="Screenshot_20260411_212912_eBay.jpg" alt="Sealed Vintage Product" class="card-image">
+            <div class="card-content">
+                <h3>Sealed Vintage Product</h3>
+                <div class="card-meta">Rare & Authentic</div>
+                <div class="card-price">$749.99</div>
+                <div class="card-button">
+                    <a href="#" class="btn-checkout">Inquire</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- GRAIL 3 -->
+        <div class="card">
+            <img src="Screenshot_20260411_212916_eBay.jpg" alt="Ultra Premium Slab" class="card-image">
+            <div class="card-content">
+                <h3>Ultra Premium Slab</h3>
+                <div class="card-meta">Investment Grade</div>
+                <div class="card-price">$1,299.99</div>
+                <div class="card-button">
+                    <a href="#" class="btn-checkout">Inquire</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- GRAIL 4 -->
+        <div class="card">
+            <img src="Screenshot_20260507_014618_Whatnot.jpg" alt="Graded Collection Piece" class="card-image">
+            <div class="card-content">
+                <h3>Graded Collection Piece</h3>
+                <div class="card-meta">High Grade Certified</div>
+                <div class="card-price">$599.99</div>
+                <div class="card-button">
+                    <a href="#" class="btn-checkout">Inquire</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- GRAIL 5 -->
+        <div class="card">
+            <img src="Screenshot_20260507_014819_Whatnot.jpg" alt="Sealed Treasure" class="card-image">
+            <div class="card-content">
+                <h3>Sealed Treasure</h3>
+                <div class="card-meta">Vintage & Authentic</div>
+                <div class="card-price">$449.99</div>
+                <div class="card-button">
+                    <a href="#" class="btn-checkout">Inquire</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- GRAIL 6 -->
+        <div class="card">
+            <img src="Screenshot_20260507_014822_Whatnot.jpg" alt="Premium Collector's Item" class="card-image">
+            <div class="card-content">
+                <h3>Premium Collector's Item</h3>
+                <div class="card-meta">Highly Sought After</div>
+                <div class="card-price">$699.99</div>
+                <div class="card-button">
+                    <a href="#" class="btn-checkout">Inquire</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
+<!-- VAULT COLLECTION SECTION (Placeholder for future expansion) -->
+<div class="container">
+    <h2 class="section-title" id="vault">Complete Vault Collection</h2>
+    <p style="text-align: center; color: var(--text-secondary); margin-bottom: 40px;">
+        🔐 More premium slabs and sealed products coming soon. <br>
+        Follow our <strong>Whatnot</strong> & <strong>TikTok</strong> for breaking events and live auctions!
+    </p>
+</div>
+
+<!-- FOOTER -->
 <footer>
-    <p>&copy; 2026 LostPokeCenter LLC. All rights reserved.</p>
-    <p>Veteran Owned & Operated</p>
+    <p class="footer-highlight">&copy; 2026 LostPokeCenter LLC. All rights reserved.</p>
+    <p>Veteran Owned & Operated | Community Driven | Quality Verified</p>
     <div class="footer-legal">
-        Pokémon and its trademarks are ©1995-2026 Nintendo, Creatures, and GAMEFREAK.
+        <p>Pokémon and its trademarks are ©1995-2026 Nintendo, Creatures, and GAMEFREAK.</p>
+        <p>All products sold as-is. Authenticity guaranteed or your money back.</p>
     </div>
 </footer>
 
