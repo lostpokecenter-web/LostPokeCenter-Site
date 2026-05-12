@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LostPokeCenter LLC | Premium Pokémon TCG</title>
+    <style>
+        :root {
+            --pk-yellow: #FFCB05;
+            --pk-blue: #2A75BB;
+            --pk-dark: #1D1D1D;
+            --pk-light: #F4F4F4;
+        }
+        body { font-family: 'Inter', sans-sans-serif; 
+            margin: 0; 
+            /* Set background to black for a clean look that matches your banner */
+            background-color: var(--pk-dark); 
+            color: white; 
+            line-height: 1.6;
+        }
+
+        /* Branding & Navigation */
+        header { 
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('YOUR_BANNER_IMAGE_URL'); /* Add your banner image URL here */
+            background-size: cover;
+            background-position: center;
+            color: white; 
+            padding: 60px 20px; 
+            text-align: center; 
+            border-bottom: 4px solid var(--pk-purple); 
+        }
+
+        .logo-img {
+            max-width: 250px; /* Adjust size for your Gengar logo */
+            height: auto;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 { margin: 0; font-size: 2.5rem; letter-spacing: 2px; display: none; } /* Hidden because the logo has text */
+        .hero p { margin: 10px 0 0; color: var(--pk-yellow); font-weight: bold; text-transform: uppercase; }
+
+        .nav-links { display: flex; justify-content: center; gap: 20px; background: #1a1a1a; padding: 12px; }
+        .nav-links a { color: white; text-decoration: none; font-size: 0.9rem; font-weight: 600; }
+
+        /* Social Hub */
+        .social-grid { display: flex; justify-content: center; gap: 15px; padding: 20px; flex-wrap: wrap; }
+        .btn-social { padding: 10px 20px; border-radius: 30px; text-decoration: none; color: white; font-weight: bold; font-size: 0.8rem; }
+        .tiktok { background: #000; border: 1px solid white; }
+        .whatnot { background: #ff03; } /* Purple to match your brand */
+        .youtube { background: #FF0000; }
+
+        /* Shop Section */
+        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+        .section-title { text-align: center; margin-bottom: 30px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        
+        .card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 15px rgba(0,0,0,0.05); transition: 0.3s; text-align: center; padding-bottom: 20px; }
+        .card:hover { transform: translateY(-10px); }
+        .card img { width: 100%; height: 300px; object-fit: contain; background: #eee; }
+        .card h3 { margin: 15px 0 5px; font-size: 1.2rem; }
+        .card .price { font-size: 1.3rem; font-weight: bold; color: var(--pk-blue); margin-bottom: 15px; }
+
+        .buy-now { background: var(--pk-blue); color: white; padding: 12px 25px; border-radius: 5px; text-decoration: none; font-weight: bold; display: inline-block; }
+
+        /* Generic Footer */
+        footer { background: var(--pk-dark); color: #888; text-align: center; padding: 50px 20px; margin-top: 60px; }
+        footer p { margin: 5px 0; }
+        .footer-legal { font-size: 0.75rem; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+<header class="hero">
+    <h1>LOSTPOKECENTER</h1>
+    <p>✦Join the Community Follow the Hunt✦</p>
+    <div class="social-grid">
+        <a href="https://vt.tiktok.com/ZTkTA7Mu9/?page=TikTokShop" class="btn-social tiktok">TikTok Shop</a>
+        <a href="https://whatnot.com/s/rsqPACvH" class="btn-social whatnot">Whatnot Live</a>
+        <a href="https://www.youtube.com/@Lost_PokeCenter" class="btn-social youtube">YouTube</a>
+    </div>
+</header>
+
+<nav class="nav-links">
+    <a href="#shop">Shop Inventory</a>
+    <a href="mailto:contact@lostpokecenter.com">Contact Support</a>
+</nav>
+
+<div class="container" id="shop">
+    <h2 class="section-title">Featured Slabs & Sealed</h2>
+    <div class="grid">
+        <div class="card">
+            <img src="https://via.placeholder.com/300x400?text=Charizard+Slab" alt="Charizard">
+            <h3>Example PSA 10 Slab</h3>
+            <div class="price">$299.99</div>
+            <a href="YOUR_STRIPE_LINK" class="buy-now">Secure Checkout</a>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/300x400?text=Booster+Box" alt="Sealed Product">
+            <h3>Charizard Ultra Premium Collection</h3>
+            <div class="price">$199.00</div>
+            <a href="YOUR_STRIPE_LINK" class="buy-now">Secure Checkout</a>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2026 LostPokeCenter LLC. All rights reserved.</p>
+    <p>Veteran Owned & Operated</p>
+    <div class="footer-legal">
+        Pokémon and its trademarks are ©1995-2026 Nintendo, Creatures, and GAMEFREAK.
+    </div>
+</footer>
+
+</body>
+</html>
